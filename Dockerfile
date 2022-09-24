@@ -22,8 +22,7 @@ RUN apt-get upgrade -y
 RUN apt-get install git -y
 
 RUN git clone https://github.com/noatgnu/argonAPI.git
-
-WORKDIR /app/src
+WORKDIR /app/src/argonAPI
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
-
-CMD ["uvicorn", "argponAPI.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]

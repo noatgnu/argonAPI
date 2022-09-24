@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Body
 from fastapi.middleware.cors import CORSMiddleware
-from datetime import datetime
+from time import time
 import random
 origins = [
     "http://localhost:4200"
@@ -34,6 +34,6 @@ async def configuration(request: Request):
 
 @app.get("/api/link/flow/{link_id}")
 async def get_link_data(link_id: str):
-    current_date = str(datetime.now())
+    current_date = time()*1000
     data = [{"linkID": i, "data": random.randrange(0, 50), "type": "flow", "date": current_date} for i in link_id.split(";")]
     return data
